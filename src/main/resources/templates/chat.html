@@ -13,13 +13,14 @@
         <input id="messageText" name="messageText" type="text" th:field="*{messageText}">
         <label for="messageType">Message Type: </label>
         <select id="messageType" name="messageType" th:field="*{messageType}">
-            <option
-                    th:each="type : ${allMessageTypes}"
-                    th:value="${type}"
-                    th:text="${type}"
-            >
-                Say
-            </option>
+<!--            <option-->
+<!--                    th:each="type : ${allMessageTypes}"-->
+<!--                    th:value="${type}"-->
+<!--                    th:text="${type}"-->
+<!--            >-->
+<!--                Say-->
+<!--            </option>-->
+            <option th:each="t: ${T(com.lime.udacitythymeleaf.model.MsgType).values()}" th:value="${t}" th:text="${t}" ></option>
         </select>
         <input type="submit">
     </form>

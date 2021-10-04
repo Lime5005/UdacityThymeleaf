@@ -28,13 +28,14 @@ public class ChatController {
     @PostMapping
     public String addChats(ChatForm chatForm, Model model) {
         this.messageListService.addChat(chatForm);
+        chatForm.setUsername("");// Set to empty each time;
         chatForm.setMessageText("");
         model.addAttribute("chats", messageListService.getChats());
         return "chat";
     }
 
-    @ModelAttribute("allMessageTypes")
-    public String[] allMessageTypes () {
-        return new String[] { "Say", "Shout", "Whisper" };
-    }
+//    @ModelAttribute("allMessageTypes")
+//    public String[] allMessageTypes () {
+//        return new String[] { "Say", "Shout", "Whisper" };
+//    }
 }

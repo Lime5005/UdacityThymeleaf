@@ -6,7 +6,17 @@ public class ChatForm {
 
     private String messageText;
 
-    private String messageType;
+    private MsgType messageType;
+
+    public MsgType getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(MsgType messageType) {
+        this.messageType = messageType;
+    }
+
+    //    private String messageType;
 
     public String getUsername() {
         return username;
@@ -24,11 +34,12 @@ public class ChatForm {
         this.messageText = messageText;
     }
 
-    public String getMessageType() {
-        return messageType;
-    }
+//    public String getMessageType() {
+//        return messageType;
+//    }
+//
+//    public void setMessageType(String messageType) {
+//        this.messageType = messageType;
+//    }
 
-    public void setMessageType(String messageType) {
-        this.messageType = messageType;
-    }
 }

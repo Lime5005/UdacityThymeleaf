@@ -33,13 +33,13 @@ public class MessageListService {
         ChatMessage chatMessage = new ChatMessage();
         chatMessage.setUsername(chatForm.getUsername());
         switch (chatForm.getMessageType()) {
-            case "Say":
+            case Say:
                 chatMessage.setMsg(chatForm.getMessageText());
                 break;
-            case "Shout":
+            case Shout:
                 chatMessage.setMsg(chatForm.getMessageText().toUpperCase(Locale.ROOT));
                 break;
-            case "Whisper":
+            case Whisper:
                 chatMessage.setMsg(chatForm.getMessageText().toLowerCase(Locale.ROOT));
                 break;
         }
