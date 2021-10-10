@@ -2,35 +2,37 @@ package com.lime.udacitythymeleaf.controller;
 
 import com.lime.udacitythymeleaf.model.ChatForm;
 import com.lime.udacitythymeleaf.service.MessageListService;
+import com.lime.udacitythymeleaf.service.MessageService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
 @Controller
 @RequestMapping("/chat")
 public class ChatController {
 
-    private MessageListService messageListService;
+    private MessageService messageService;
 
-    public ChatController(MessageListService messageListService) {
-        this.messageListService = messageListService;
+    public ChatController(MessageService messageService) {
+        this.messageService = messageService;
     }
 
     @GetMapping
-    public String showChats(ChatForm chatForm, Model model) {
-        model.addAttribute("chats", messageListService.getChats());
+    public String getChatPage(ChatForm chatForm, Model model) {
+        model.addAttribute("chatMessages", this.messageService.getChatMessages());
         return "chat";
     }
 
     @PostMapping
-    public String addChats(ChatForm chatForm, Model model) {
-        this.messageListService.addChat(chatForm);
-        chatForm.setUsername("");// Set to empty each time;
+    public String postChatMessage(Authentication authentication, ChatForm chatForm, Model model) {
+        chatForm.setUsername(authentication.getName());
+        this.messageService.addMessage(chatForm);
         chatForm.setMessageText("");
-        model.addAttribute("chats", messageListService.getChats());
+        model.addAttribute("chatMessages", this.messageService.getChatMessages());
         return "chat";
     }
 

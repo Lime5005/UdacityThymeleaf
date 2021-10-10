@@ -1,15 +1,16 @@
 package com.lime.udacitythymeleaf.model;
 
 public class ChatMessage {
+    private Integer messageId;
     private String username;
-    private String msg;
+    private String messageText;
 
-    public ChatMessage(String username, String msg) {
-        this.username = username;
-        this.msg = msg;
+    public Integer getMessageId() {
+        return messageId;
     }
 
-    public ChatMessage() {
+    public void setMessageId(Integer messageId) {
+        this.messageId = messageId;
     }
 
     public String getUsername() {
@@ -20,11 +21,11 @@ public class ChatMessage {
         this.username = username;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessageText() {
+        return messageText;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
     }
 }

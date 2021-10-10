@@ -34,13 +34,13 @@ public class MessageListService {
         chatMessage.setUsername(chatForm.getUsername());
         switch (chatForm.getMessageType()) {
             case Say:
-                chatMessage.setMsg(chatForm.getMessageText());
+                chatMessage.setMessageText(chatForm.getMessageText());
                 break;
             case Shout:
-                chatMessage.setMsg(chatForm.getMessageText().toUpperCase(Locale.ROOT));
+                chatMessage.setMessageText(chatForm.getMessageText().toUpperCase(Locale.ROOT));
                 break;
             case Whisper:
-                chatMessage.setMsg(chatForm.getMessageText().toLowerCase(Locale.ROOT));
+                chatMessage.setMessageText(chatForm.getMessageText().toLowerCase(Locale.ROOT));
                 break;
         }
         this.chatMessages.add(chatMessage);
